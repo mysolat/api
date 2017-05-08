@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20170508122914) do
   end
 
   create_table "timetables", force: :cascade do |t|
+    t.integer "zone_id"
     t.date "tarikh"
     t.string "imsak"
     t.string "subuh"
