@@ -44,23 +44,23 @@ class PrayerTimeService
       {kod: "TRG02", zon: "Besut, Setiu", negeri: "Terengganu"},
       {kod: "TRG03", zon: "Hulu Terengganu", negeri: "Terengganu"},
       {kod: "TRG04", zon: "Kemaman Dungun", negeri: "Terengganu"},
-      {kod: "SBH01", zon: "Zon 1 - Sandakan, Bdr. Bkt. Garam, Semawang, Temanggong, Tambisan", negeri: "Sabah"},
-      {kod: "SBH02", zon: "Zon 2 - Pinangah, Terusan, Beluran, Kuamut, Telupit", negeri: "Sabah"},
-      {kod: "SBH03", zon: "Zon 3 - Lahad Datu, Kunak, Silabukan, Tungku, Sahabat, Semporna", negeri: "Sabah"},
-      {kod: "SBH04", zon: "Zon 4 - Tawau, Balong, Merotai, Kalabakan", negeri: "Sabah"},
-      {kod: "SBH05", zon: "Zon 5 - Kudat, Kota Marudu, Pitas, Pulau Banggi", negeri: "Sabah"},
-      {kod: "SBH06", zon: "Zon 6 - Gunung Kinabalu", negeri: "Sabah"},
-      {kod: "SBH07", zon: "Zon 7 - Papar, Ranau, Kota Belud, Tuaran, Penampang, Kota Kinabalu", negeri: "Sabah"},
-      {kod: "SBH08", zon: "Zon 8 - Pensiangan, Keningau, Tambunan, Nabawan", negeri: "Sabah"},
-      {kod: "SBH09", zon: "Zon 9 - Sipitang, Membakut, Beaufort, Kuala Penyu, Weston, Tenom, Long Pa Sia", negeri: "Sabah"},
-      {kod: "SWK01", zon: "Zon 1 - Limbang, Sundar, Terusan, Lawas", negeri: "Sarawak"},
-      {kod: "SWK02", zon: "Zon 2 - Niah, Belaga, Sibuti, Miri, Bekenu, Marudi", negeri: "Sarawak"},
-      {kod: "SWK03", zon: "Zon 3 - Song, Belingan, Sebauh, Bintulu, Tatau, Kapit", negeri: "Sarawak"},
-      {kod: "SWK04", zon: "Zon 4 - Igan, Kanowit, Sibu, Dalat, Oya", negeri: "Sarawak"},
-      {kod: "SWK05", zon: "Zon 5 - Belawai, Matu, Daro, Sarikei, Julau, Bitangor, Rajang", negeri: "Sarawak"},
-      {kod: "SWK06", zon: "Zon 6 - Kabong, Lingga, Sri Aman, Engkelili, Betong, Spaoh, Pusa, Saratok, Roban, Debak", negeri: "Sarawak"},
-      {kod: "SWK07", zon: "Zon 7 - Samarahan, Simunjan, Serian, Sebuyau, Meludam", negeri: "Sarawak"},
-      {kod: "SWK08", zon: "Zon 8 - Kuching, Bau, Lundu, Sematan", negeri: "Sarawak"},
+      {kod: "SBH01", zon: "Sandakan, Bdr. Bkt. Garam, Semawang, Temanggong, Tambisan", negeri: "Sabah"},
+      {kod: "SBH02", zon: "Pinangah, Terusan, Beluran, Kuamut, Telupit", negeri: "Sabah"},
+      {kod: "SBH03", zon: "Lahad Datu, Kunak, Silabukan, Tungku, Sahabat, Semporna", negeri: "Sabah"},
+      {kod: "SBH04", zon: "Tawau, Balong, Merotai, Kalabakan", negeri: "Sabah"},
+      {kod: "SBH05", zon: "Kudat, Kota Marudu, Pitas, Pulau Banggi", negeri: "Sabah"},
+      {kod: "SBH06", zon: "Gunung Kinabalu", negeri: "Sabah"},
+      {kod: "SBH07", zon: "Papar, Ranau, Kota Belud, Tuaran, Penampang, Kota Kinabalu", negeri: "Sabah"},
+      {kod: "SBH08", zon: "Pensiangan, Keningau, Tambunan, Nabawan", negeri: "Sabah"},
+      {kod: "SBH09", zon: "Sipitang, Membakut, Beaufort, Kuala Penyu, Weston, Tenom, Long Pa Sia", negeri: "Sabah"},
+      {kod: "SWK01", zon: "Limbang, Sundar, Terusan, Lawas", negeri: "Sarawak"},
+      {kod: "SWK02", zon: "Niah, Belaga, Sibuti, Miri, Bekenu, Marudi", negeri: "Sarawak"},
+      {kod: "SWK03", zon: "Song, Belingan, Sebauh, Bintulu, Tatau, Kapit", negeri: "Sarawak"},
+      {kod: "SWK04", zon: "Igan, Kanowit, Sibu, Dalat, Oya", negeri: "Sarawak"},
+      {kod: "SWK05", zon: "Belawai, Matu, Daro, Sarikei, Julau, Bitangor, Rajang", negeri: "Sarawak"},
+      {kod: "SWK06", zon: "Kabong, Lingga, Sri Aman, Engkelili, Betong, Spaoh, Pusa, Saratok, Roban, Debak", negeri: "Sarawak"},
+      {kod: "SWK07", zon: "Samarahan, Simunjan, Serian, Sebuyau, Meludam", negeri: "Sarawak"},
+      {kod: "SWK08", zon: "Kuching, Bau, Lundu, Sematan", negeri: "Sarawak"},
       {kod: "JHR04", zon: "Batu Pahat, Muar, Segamat, Gemas", negeri: "Johor"},
       {kod: "PRK04", zon: "Temengor dan Belum", negeri: "Perak"},
       {kod: "PRK05", zon: "Teluk Intan, Bagan Datoh, Kg.Gajah, Sri Iskandar, Beruas, Parit, Lumut, Setiawan dan Pulau Pangkor", negeri: "Perak"},
@@ -68,9 +68,20 @@ class PrayerTimeService
       {kod: "PRK07", zon: "Bukit Larut", negeri: "Perak"},
       {kod: "KDH05", zon: "Kulim, Bandar Bahru", negeri: "Kedah"},
       {kod: "KDH06", zon: "Langkawi", negeri: "Kedah"},
-      {kod: "SWK09", zon: "Zon 9 - Zon Khas", negeri: "Sarawak"},
+      {kod: "SWK09", zon: "Zon Khas", negeri: "Sarawak"},
       {kod: "KDH07", zon: "Gunung Jerai", negeri: "Kedah"}
     ]
+  end
+
+  def self.seed_data
+    locations.each do |location|
+      state = State.find_or_create_by(name: location[:negeri])
+      zone = Zone.create_with(remarks: location[:zon], state_id: state.id).find_or_create_by(code: location[:kod])
+      districts = zone.remarks.split(", ")
+      districts.each do |district|
+        location = Location.find_or_create_by(district: district, zone_id: zone.id)
+      end  
+    end
   end
 
   def fetch
@@ -99,6 +110,7 @@ class PrayerTimeService
         detail[name] = row.at_xpath(xpath).to_s.strip
       end
       detail
+      #find by or - zone.find_by(@zone).timetables.create_with(detail).find_by_or_creat_by(tarik: detail[:tarikh])
     end
     #remove first element header
     details.shift
