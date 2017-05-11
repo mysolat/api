@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :locations
+  resources :zones
+  resources :states
+  get 'state/name'
+
+  get 'state/country_id'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   scope "takwim" do
     resources :locations, path: "(/year/:year)(/month/:month)/locations"
