@@ -1,2 +1,5 @@
-json.extract! state, :id, :name, :country_id, :created_at, :updated_at
-json.url state_url(state, format: :json)
+json.state state.name
+
+json.zones do 
+	json.array!  state.zones, partial: 'zones/zone', as: :zone
+end

@@ -1,2 +1,7 @@
-json.extract! zone, :id, :code, :state_id, :remarks, :created_at, :updated_at
-json.url zone_url(zone, format: :json)
+json.zone zone.code
+json.locations do
+	json.array!  zone.locations, partial: 'locations/location', as: :location
+end
+json.timetables do
+	json.array!  zone.timetables, partial: 'timetables/timetable', as: :timetable
+end
