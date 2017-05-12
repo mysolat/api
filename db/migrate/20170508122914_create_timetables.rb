@@ -10,7 +10,7 @@ class CreateTimetables < ActiveRecord::Migration[5.1]
       t.string    :asar
       t.string    :maghrib
       t.string    :isyak
-      t.datetime  :serial
+      t.string    :serial
 
       t.timestamps
     end
