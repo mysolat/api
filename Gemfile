@@ -46,3 +46,5 @@ gem 'decent_exposure'
 gem 'hijri'
 gem 'hijri_umm_alqura'
 gem 'seed_dump'
+#gem "administrate", github: 'thoughtbot/administrate'
+

@@ -84,6 +84,36 @@ class PrayerTimeService
     end
   end
 
+  def self.seed_timetable
+    zones = Zone.all
+    years = [Date.today.year, (Date.today + 1.year).year] #2017,2018
+    years.each do |year|
+
+      (1..12).each do |month|
+          zones.each do |zone|
+            puts year
+            puts month
+            timetables = PrayerTimeService.new(zone: zone.code, year: year, month: month).fetch
+            if timetables.present?
+              timetables.each do |timetable|
+                puts timetable
+                timetable = Timetable.create_with(imsak: timetable[:imsak], 
+                                                  subuh: timetable[:subuh], 
+                                                  syuruk: timetable[:syuruk], 
+                                                  zohor: timetable[:zohor], 
+                                                  asar: timetable[:asar], 
+                                                  maghrib: timetable[:maghrib], 
+                                                  isyak: timetable[:isyak]).find_or_create_by(tarikh: "#{year}-#{month}-#{timetable[:tarikh].to_i}".to_date, zone_id: zone.id)
+              end
+            end
+          end
+      end
+
+    end
+
+    #Timetable.create(zone_id,tarikh,imsak,subuh,syuruk,zohor,asar,maghrib,isyak,serial)
+  end
+
   def fetch
     kod = @zone
     year = @year
