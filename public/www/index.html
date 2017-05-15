@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="Waktu Solat Malaysia" name="description" />
+    <meta content="Waktu,Solat,Taqwim,Jakim,takwim, takwim solat, taqwim solat" name="keywords" />
+    <meta content="Mohd Khairi Mohd Adnan" name="author" />
+    <title>Waktu Solat Malaysia</title>
+     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.7.3/vue-resource.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    
+ </head>
+  <body class="cyan">
+    <div class="navbar-fixed">
+      <nav class="cyan darken-1">
+        <div class="container">
+          <div class="nav-wrapper">
+            <a class="brand-logo" href="/" id="logo-container">My Solat</a><a class="button-collapse" data-activates="mobile-demo" href="#"><i class="mdi-navigation-menu"></i></a>
+            <ul class="right hide-on-med-and-down">
+              <li>
+                <a href="/"><i class="mdi-action-search"></i></a>
+              </li>
+              <li>
+                <a href="/"><i class="mdi-action-view-module"></i></a>
+              </li>
+              <li>
+                <a href="/"><i class="mdi-navigation-refresh"></i></a>
+              </li>
+              <li>
+                <a href="/"><i class="mdi-navigation-more-vert"></i></a>
+              </li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+              <li>
+                <a href="/">Lihat taqwim</a>
+              </li>
+              <li>
+                <a href="/"> Link</a>
+              </li>
+              <li>
+                <a href="/"> Link</a>
+              </li>
+              <li>
+                <a href="/"> Link</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    
+    <div class="container">
+      <div class="row white-text" id="app">
+        <div class="col s4">
+          <ul>
+            <li v-for="zone in zones">
+              <a class="white-text" href="#" v-on:click="getThisZone(zone.kod)">{{zone.zon}} {{zone.negeri}}</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col s8">
+          <h1>
+            {{current_zone}}
+          </h1>
+          <h2></h2>
+          <div class="btn-group">
+            <a class="btn-floating p-l-8 waves-effect waves-light cyan darken-1" href="#" style="margin-right: 2%;" v-bind:class="{&#39;active&#39;: month == &#39;1&#39;}" v-on:click="getThisMonth(&#39;1&#39;)">01</a>
+            <a class="btn-floating p-l-8 waves-effect waves-light cyan darken-1" href="#" style="margin-right: 2%;" v-bind:class="{&#39;active&#39;: month == &#39;2&#39;}" v-on:click="getThisMonth(&#39;2&#39;)">02</a>
+            <a class="btn-floating p-l-8 waves-effect waves-light cyan darken-1" href="#" style="margin-right: 2%;" v-bind:class="{&#39;active&#39;: month == &#39;3&#39;}" v-on:click="getThisMonth(&#39;3&#39;)">03</a>
+            <a class="btn-floating p-l-8 waves-effect waves-light cyan darken-1" href="#" style="margin-right: 2%;" v-bind:class="{&#39;active&#39;: month == &#39;4&#39;}" v-on:click="getThisMonth(&#39;4&#39;)">04</a>
+            <a class="btn-floating p-l-8 waves-effect waves-light cyan darken-1" href="#" style="margin-right: 2%;" v-bind:class="{&#39;active&#39;: month == &#39;5&#39;}" v-on:click="getThisMonth(&#39;5&#39;)">05</a>
+            <a class="btn-floating p-l-8 waves-effect waves-light cyan darken-1" href="#" style="margin-right: 2%;" v-bind:class="{&#39;active&#39;: month == &#39;6&#39;}" v-on:click="getThisMonth(&#39;6&#39;)">06</a>
+            <a class="btn-floating p-l-8 waves-effect waves-light cyan darken-1" href="#" style="margin-right: 2%;" v-bind:class="{&#39;active&#39;: month == &#39;7&#39;}" v-on:click="getThisMonth(&#39;7&#39;)">07</a>
+            <a class="btn-floating p-l-8 waves-effect waves-light cyan darken-1" href="#" style="margin-right: 2%;" v-bind:class="{&#39;active&#39;: month == &#39;8&#39;}" v-on:click="getThisMonth(&#39;8&#39;)">08</a>
+            <a class="btn-floating p-l-8 waves-effect waves-light cyan darken-1" href="#" style="margin-right: 2%;" v-bind:class="{&#39;active&#39;: month == &#39;9&#39;}" v-on:click="getThisMonth(&#39;9&#39;)">09</a>
+            <a class="btn-floating p-l-8 waves-effect waves-light cyan darken-1" href="#" style="margin-right: 2%;" v-bind:class="{&#39;active&#39;: month == &#39;10&#39;}" v-on:click="getThisMonth(&#39;10&#39;)">10</a>
+            <a class="btn-floating p-l-8 waves-effect waves-light cyan darken-1" href="#" style="margin-right: 2%;" v-bind:class="{&#39;active&#39;: month == &#39;11&#39;}" v-on:click="getThisMonth(&#39;11&#39;)">11</a>
+            <a class="btn-floating p-l-8 waves-effect waves-light cyan darken-1" href="#" style="margin-right: 2%;" v-bind:class="{&#39;active&#39;: month == &#39;12&#39;}" v-on:click="getThisMonth(&#39;12&#39;)">12</a>
+          </div>
+          <br />
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  Tarikh
+                </th>
+                <th>
+                  Hari
+                </th>
+                <th>
+                  Subuh
+                </th>
+                <th>
+                  Syuruk
+                </th>
+                <th>
+                  Zohor
+                </th>
+                <th>
+                  Asar
+                </th>
+                <th>
+                  Maghrib
+                </th>
+                <th>
+                  Isyak
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="day in days">
+                <td>
+                  {{day.tarikh}}
+                </td>
+                <td>
+                  {{day.hari}}
+                </td>
+                <td>
+                  {{day.subuh}}  
+                </td>
+                <td>
+                  {{day.syuruk}}
+                </td>
+                <td>
+                  {{day.zohor}}
+                </td>
+                <td>
+                  {{day.asar}} 
+                </td>
+                <td>
+                  {{day.maghrib}} 
+                </td>
+                <td>
+                  {{day.isyak}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+     
+    </div>
+    <footer class="cyan">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text"></h5>
+            <p class="grey-text lighten-4">
+              Base on jakim e-solat site
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright cyan darken-1">
+        <div class="container">
+          Made in <a class="orange-text lighten-3" href="#"> Malaysia with love</a>
+        </div>
+      </div>
+    </footer>
+	
+    <script src="/web/app.js"></script>
+  </body>
+</html>
