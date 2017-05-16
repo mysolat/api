@@ -9,6 +9,14 @@ class ZonesController < ApplicationController
   end
 
   def show
+    @year = params[:year] || Date.today.year
+    @month = params[:month] || Date.today.year
+
+    if params[:year].present? and params[:month].present?
+      @timetables = @zone.timetables.by_year(@year).by_month(@month)
+    else
+      @timetables = @zone.timetables.today
+    end
     respond_with(@zone)
   end
 

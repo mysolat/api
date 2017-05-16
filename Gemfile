@@ -43,8 +43,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'slim-rails'
 gem 'responders'
 gem 'decent_exposure'
-gem 'hijri'
 gem 'hijri_umm_alqura'
 gem 'seed_dump'
 #gem "administrate", github: 'thoughtbot/administrate'
+gem 'by_star', github: 'radar/by_star'
 

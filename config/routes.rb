@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :timetables
   resources :locations
-  resources :zones
+  resources :zones, path: "(/year/:year)(/month/:month)/zones"
   resources :states
   get 'state/name'
 

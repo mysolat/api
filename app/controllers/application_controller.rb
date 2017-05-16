@@ -4,6 +4,7 @@ class ApplicationController < ActionController::API
   self.responder = ApplicationResponder
   respond_to :json
 
+  before_action :set_default_request_format
   after_action :cors_set_access_control_headers
 
   def cors_set_access_control_headers
@@ -22,6 +23,13 @@ class ApplicationController < ActionController::API
 
       render :text => '', :content_type => 'text/plain'
     end
+  end
+
+
+  protected
+
+  def set_default_request_format
+    request.format = :json unless params[:format]
   end
 
 
