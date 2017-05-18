@@ -2,7 +2,6 @@
 #date : 2015-02-05
 require 'nokogiri'
 require 'open-uri'
-require 'hijri'
 class PrayerTimeService
   def initialize(params)
     @zone = params[:zone]
