@@ -46,5 +46,4 @@ gem 'decent_exposure'
 gem 'hijri_umm_alqura'
 gem 'seed_dump'
 #gem "administrate", github: 'thoughtbot/administrate'
-gem 'by_star', github: 'radar/by_star'
 
