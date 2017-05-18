@@ -1,2 +1,3 @@
-json.extract! timetable, :tarikh, :imsak, :subuh, :syuruk, :zohor, :asar, :maghrib, :isyak
-json.tarikh_hijrah hijri_date(timetable.tarikh)
+json.extract! timetable, :imsak, :subuh, :syuruk, :zohor, :asar, :maghrib, :isyak
+json.tarikh timetable.tarikh.to_date.try(:strftime, "%e %B %Y")
+json.tarikh_hijrah formatted_hijrah_date(timetable.tarikh)
