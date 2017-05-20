@@ -32,7 +32,7 @@ var vm = new Vue({
     
     fetchData: function(yy,mm,zone) {
 	  self = this
-	  Calendar.get({year: yy, month: mm, zone: zone}).then(function (response) {    
+	  Calendar.get({zone: zone}).then(function (response) {
         self.days = response.data;
       });
     },
