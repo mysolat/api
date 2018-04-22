@@ -16,10 +16,10 @@ class PrayerTimeService
       {kod: "KDH03", zon: "Padang Terap, Sik", negeri: "Kedah"},
       {kod: "KDH04", zon: "Baling", negeri: "Kedah"},
       {kod: "PNG01", zon: "Seluruh Negeri Pulau Pinang", negeri: "Pulau Pinang"},
-      {kod: "PRK01", zon: "Tapah,Slim River dan Tanjung Malim", negeri: "Perak"},
-      {kod: "PRK02", zon: "Ipoh, Batu Gajah, Kampar, Sg. Siput dan Kuala Kangsar", negeri: "Perak"},
-      {kod: "PRK03", zon: "Pengkalan Hulu, Grik dan Lenggong", negeri: "Perak"},
-      {kod: "SGR01", zon: "Gombak, H.Selangor, Rawang, H.Langat, Sepang,Petaling, S.Alam", negeri: "Selangor"},
+      {kod: "PRK01", zon: "Tapah, Slim River, Tanjung Malim", negeri: "Perak"},
+      {kod: "PRK02", zon: "Ipoh, Batu Gajah, Kampar, Sg. Siput, Kuala Kangsar", negeri: "Perak"},
+      {kod: "PRK03", zon: "Pengkalan Hulu, Grik, Lenggong", negeri: "Perak"},
+      {kod: "SGR01", zon: "Gombak, Hulu Selangor, Rawang, Hulu Langat, Sepang, Petaling, Shah Alam", negeri: "Selangor"},
       {kod: "SGR02", zon: "Sabak Bernam, Kuala Selangor, Klang, Kuala Langat", negeri: "Selangor"},
       {kod: "SGR03", zon: "Kuala Lumpur", negeri: "Kuala Lumpur"},
       {kod: "SGR04", zon: "Putrajaya", negeri: "Putrajaya"},
@@ -27,9 +27,9 @@ class PrayerTimeService
       {kod: "NGS01", zon: "Jempol, Tampin", negeri: "Negeri Sembilan"},
       {kod: "NGS02", zon: "Port Dickson, Seremban, Kuala Pilah, Jelebu, Rembau", negeri: "Negeri Sembilan"},
       {kod: "MLK01", zon: "Bandar Melaka, Alor Gajah, Jasin, Masjid Tanah, Merlimau, Nyalas", negeri: "Melaka"},
-      {kod: "JHR01", zon: "Pulau Aur dan Pemanggil", negeri: "Johor"},
+      {kod: "JHR01", zon: "Pulau Aur, Pemanggil", negeri: "Johor"},
       {kod: "JHR02", zon: "Kota Tinggi, Mersing, Johor Bahru", negeri: "Johor"},
-      {kod: "JHR03", zon: "Kluang dan Pontian", negeri: "Johor"},
+      {kod: "JHR03", zon: "Kluang, Pontian", negeri: "Johor"},
       {kod: "PLS01", zon: "Kangar, Padang Besar, Arau", negeri: "Perlis"},
       {kod: "PHG01", zon: "Pulau Tioman", negeri: "Pahang"},
       {kod: "PHG02", zon: "Kuantan, Pekan, Rompin, Muadzam Shah", negeri: "Pahang"},
@@ -61,9 +61,9 @@ class PrayerTimeService
       {kod: "SWK07", zon: "Samarahan, Simunjan, Serian, Sebuyau, Meludam", negeri: "Sarawak"},
       {kod: "SWK08", zon: "Kuching, Bau, Lundu, Sematan", negeri: "Sarawak"},
       {kod: "JHR04", zon: "Batu Pahat, Muar, Segamat, Gemas", negeri: "Johor"},
-      {kod: "PRK04", zon: "Temengor dan Belum", negeri: "Perak"},
-      {kod: "PRK05", zon: "Teluk Intan, Bagan Datoh, Kg.Gajah, Sri Iskandar, Beruas, Parit, Lumut, Setiawan dan Pulau Pangkor", negeri: "Perak"},
-      {kod: "PRK06", zon: "Selama, Taiping, Bagan Serai dan Parit Buntar", negeri: "Perak"},
+      {kod: "PRK04", zon: "Temengor, Belum", negeri: "Perak"},
+      {kod: "PRK05", zon: "Teluk Intan, Bagan Datoh, Kg.Gajah, Sri Iskandar, Beruas, Parit, Lumut, Setiawan, Pulau Pangkor", negeri: "Perak"},
+      {kod: "PRK06", zon: "Selama, Taiping, Bagan Serai, Parit Buntar", negeri: "Perak"},
       {kod: "PRK07", zon: "Bukit Larut", negeri: "Perak"},
       {kod: "KDH05", zon: "Kulim, Bandar Bahru", negeri: "Kedah"},
       {kod: "KDH06", zon: "Langkawi", negeri: "Kedah"},
@@ -76,7 +76,7 @@ class PrayerTimeService
     locations.each do |location|
       state = State.find_or_create_by(name: location[:negeri])
       zone = Zone.create_with(remarks: location[:zon], state_id: state.id).find_or_create_by(code: location[:kod])
-      districts = zone.remarks.split(", ")
+      districts = zone.remarks.split(",")
       districts.each do |district|
         location = Location.find_or_create_by(district: district, zone_id: zone.id)
       end  

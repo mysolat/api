@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  namespace :admin do
+      resources :locations
+      resources :states
+      resources :timetables
+      resources :zones
+
+      root to: "locations#index"
+    end
   resources :timetables
   resources :locations
   resources :zones, path: "(/year/:year)(/month/:month)/zones"
