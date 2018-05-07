@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2017_05_08_122914) do
 
   create_table "locations", force: :cascade do |t|
-    t.integer "zone_id"
+    t.string "zone_code"
     t.string "district"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -27,11 +27,12 @@ ActiveRecord::Schema.define(version: 2017_05_08_122914) do
   end
 
   create_table "timetables", force: :cascade do |t|
-    t.integer "zone_id"
+    t.string "zone_code"
     t.date "tarikh"
     t.string "imsak"
     t.string "subuh"
     t.string "syuruk"
+    t.string "dhuha"
     t.string "zohor"
     t.string "asar"
     t.string "maghrib"

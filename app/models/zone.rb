@@ -1,8 +1,8 @@
 class Zone < ApplicationRecord
   belongs_to :state
 
-  has_many :locations
-  has_many :timetables
+  has_many :locations,  primary_key: :code, foreign_key: :zone_code
+  has_many :timetables, primary_key: :code, foreign_key: :zone_code
 
   def to_param
     code

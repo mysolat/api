@@ -1,11 +1,12 @@
 class CreateTimetables < ActiveRecord::Migration[5.1]
   def change
     create_table :timetables do |t|
-      t.integer   :zone_id
+      t.string    :zone_code
       t.date      :tarikh
       t.string    :imsak
       t.string    :subuh
       t.string    :syuruk
+      t.string    :dhuha
       t.string    :zohor
       t.string    :asar
       t.string    :maghrib
