@@ -1,16 +1,14 @@
 class ZonesController < ApplicationController
   before_action :set_zone, only: [:show, :update, :destroy]
 
-  respond_to :json
-
   def index
     @zones = Zone.all
     respond_with(@zones)
   end
 
   def show
-    @year = params[:year].to_i || Date.today.year
-    @month = params[:month].to_i || Date.today.year
+    @year = params[:year].present? ? params[:year].to_i : Date.today.year
+    @month = params[:month].present? ? params[:month].to_i : Date.today.month
 
     if params[:year].present? and params[:month].present?
       start_date = Date.new(@year, @month, 1)
@@ -19,6 +17,7 @@ class ZonesController < ApplicationController
     else
       @timetables = @zone.timetables.daily(Date.today)
     end
+    UpdaterJob.perform_later(zone: @zone.code, year: @year, month: @month)
     respond_with(@zone)
   end
 
