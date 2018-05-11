@@ -40,6 +40,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+gem 'rails-i18n'
 gem 'slim-rails'
 gem 'responders'
 gem 'decent_exposure'

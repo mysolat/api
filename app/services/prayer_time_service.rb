@@ -119,7 +119,6 @@ class PrayerTimeService
     doc = Nokogiri::HTML(open html)
     doc.search('.//img').remove
     rows = doc.xpath('//table[@bgcolor="#7C7C7C"]/tr')
-
     details = rows.collect do |row|
       detail = {}
       [
