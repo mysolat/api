@@ -14,7 +14,7 @@ class UpdaterJob < ApplicationJob
       timetables.each do |timetable|
         date = "#{year}-#{month}-#{timetable[:tarikh].to_i}".to_date
         data = { imsak: timetable[:imsak], subuh: timetable[:subuh], syuruk: timetable[:syuruk], zohor: timetable[:zohor], asar: timetable[:asar], maghrib: timetable[:maghrib],  isyak: timetable[:isyak] }
-        timetable = Timetable.create_with(data).find_or_create_by(tarikh: date, zone_id: zone.id)
+        timetable = Timetable.create_with(data).find_or_create_by(tarikh: date, zone_code: zone.code)
         timetable.update_columns(serial: "#{year}#{month}")
       end
     end

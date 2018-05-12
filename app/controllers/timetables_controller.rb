@@ -1,8 +1,6 @@
 class TimetablesController < ApplicationController
   before_action :set_timetable, only: [:show, :update, :destroy]
 
-  respond_to :json
-
   def index
     @timetables = Timetable.all
     respond_with(@timetables)

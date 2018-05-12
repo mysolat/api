@@ -1,7 +1,7 @@
 class LocationsController < ApplicationController
   def index
-    @locations = PrayerTimeService.locations
-    render json: @locations
+    @locations = Location.all
+    respond_with(@locations)
   end
 
   def show

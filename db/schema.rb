@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2017_05_08_122914) do
 
   create_table "locations", force: :cascade do |t|
+    t.integer "state_id"
     t.string "zone_code"
     t.string "district"
     t.datetime "created_at", null: false

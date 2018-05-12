@@ -38,7 +38,7 @@ class PrayerTimeService
       {kod: "PHG05", zon: "Genting Sempah, Janda Baik, Bukit Tinggi", negeri: "Pahang"},
       {kod: "PHG06", zon: "Bukit Fraser, Genting Higlands, Cameron Higlands", negeri: "Pahang"},
       {kod: "KTN01", zon: "K.Bharu, Bachok, Pasir Puteh, Tumpat, Pasir Mas,Tnh. Merah, Machang, Kuala Krai, Mukim Chiku", negeri: "Kelantan"},
-      {kod: "KTN03", zon: "Jeli, Gua Musang (Mukim Galas, Bertam)", negeri: "Kelantan"},
+      {kod: "KTN03", zon: "Jeli, Gua Musang (Mukim Galas & Bertam)", negeri: "Kelantan"},
       {kod: "TRG01", zon: "Kuala Terengganu, Marang", negeri: "Terengganu"},
       {kod: "TRG02", zon: "Besut, Setiu", negeri: "Terengganu"},
       {kod: "TRG03", zon: "Hulu Terengganu", negeri: "Terengganu"},
@@ -78,7 +78,7 @@ class PrayerTimeService
       zone = Zone.create_with(remarks: location[:zon], state_id: state.id).find_or_create_by(code: location[:kod])
       districts = zone.remarks.split(",")
       districts.each do |district|
-        location = Location.find_or_create_by(district: district, zone_id: zone.id)
+        location = Location.find_or_create_by(district: district, state_id: state.id, zone_code: zone.code)
       end  
     end
   end
@@ -100,7 +100,7 @@ class PrayerTimeService
                                               asar: timetable[:asar], 
                                               maghrib: timetable[:maghrib], 
                                               isyak: timetable[:isyak])
-                                .find_or_create_by(tarikh: "#{year}-#{month}-#{timetable[:tarikh].to_i}".to_date, zone_id: zone.id)
+                                .find_or_create_by(tarikh: "#{year}-#{month}-#{timetable[:tarikh].to_i}".to_date, zone_code: zone.code)
           end
         end
       end

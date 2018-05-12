@@ -8,6 +8,12 @@ class Zone < ApplicationRecord
     code
   end
 
+  def state_name
+    state.try(:name)
+  end
+
+
+
   def self.find(input)
     if input.is_a?(Integer)
       super
