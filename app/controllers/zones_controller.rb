@@ -13,6 +13,7 @@ class ZonesController < ApplicationController
       start_date = Date.new(@year, @month, 1)
       end_date = start_date.end_of_month
       @timetables = @zone.timetables.monthly(start_date, end_date)
+      UpdaterJob.perform_later(zone: @zone.code, year: @year, month: @month)
     else
       @timetables = @zone.timetables.daily(Date.today)
     end

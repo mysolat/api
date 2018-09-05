@@ -7,16 +7,54 @@ class UpdaterJob < ApplicationJob
     year = params[:year] || Date.today.year
     month = params[:month] || Date.today.month
 
+    start_date = Date.new(year, month, 1)
+    end_date = start_date.end_of_month
+
     #zone.timetables.monthly(year, month)
-    timetables = Jakim.monthly(month: month, zone: params[:zone])
-    Rails.logger.debug timetables.inspect
+
+    days = Time.days_in_month(month, year)
+
+    sn = "#{Date.today.year}#{Date.today.month}"
+
+    db = zone.timetables.monthly(start_date, end_date)
+    db_sn = db.pluck(:serial).uniq
+
+    puts db_sn.inspect
+    puts db.count.inspect
   
-    timetables["prayerTime"].try(:each) do |timetable|
-      date = timetable.date.to_date
-      data = { imsak: timetable.imsak, subuh: timetable.fajr, syuruk: timetable.syuruk, zohor: timetable.dhuhr, asar: timetable.asr, maghrib: timetable.maghrib,  isyak: timetable.isha, hijri: timetable.hijri }
-      timetable = Timetable.create_with(data).find_or_create_by(tarikh: date, zone_code: zone.code)
-      timetable.update(serial: "#{Date.today.year}#{Date.today.month}") if timetable.persisted?
+    skip_update = false
+    if (db.count() == days) and (db_sn.first.to_i >= sn.to_i)
+      puts "skipping"
+      skip_update = true
     end
 
+    if skip_update == false
+      timetables = Jakim.monthly(month: month, zone: params[:zone])
+      timetables["prayerTime"].try(:each) do |timetable|
+        puts timetable.date.inspect
+        date = normalize_date(timetable.date).to_date
+        data = { imsak: timetable.imsak, subuh: timetable.fajr, syuruk: timetable.syuruk, zohor: timetable.dhuhr, asar: timetable.asr, maghrib: timetable.maghrib,  isyak: timetable.isha, hijri: timetable.hijri }
+        timetable = zone.timetables.create_with(data).find_or_create_by(tarikh: date, zone_code: zone.code)
+        timetable.assign_attributes(serial: sn) 
+        timetable.save if timetable.changed?
+      end
+    end
+
+  end
+
+
+  def normalize_date(date)
+    date = date.to_s.split("-")
+    day = date[0]
+    month = date[1]
+    year = date[2]
+    puts "#{date} #{month}"
+    puts malay_month[month.downcase].inspect
+    "#{year}-#{malay_month[month.downcase]}-#{day}"
+  end
+
+  def malay_month
+    {'jan' => 1, 'feb' => 2, 'mac' => 3, 'apr' => 4, 'mei' => 5, 'jun' => 6,
+     'jul' => 7, 'ogos' => 8, 'sep' => 9, 'okt' => 10, 'nov' => 11, 'dis' => 2}
   end
 end
