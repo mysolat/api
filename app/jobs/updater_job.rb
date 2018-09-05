@@ -29,13 +29,15 @@ class UpdaterJob < ApplicationJob
     end
 
     if skip_update == false
+      puts "updating #{params[:zone]} #{year}-#{month}"
       timetables = Jakim.monthly(month: month, zone: params[:zone])
       timetables["prayerTime"].try(:each) do |timetable|
         #puts timetable.date.inspect
         date = normalize_date(timetable.date).to_date
         data = { imsak: timetable.imsak, subuh: timetable.fajr, syuruk: timetable.syuruk, zohor: timetable.dhuhr, asar: timetable.asr, maghrib: timetable.maghrib,  isyak: timetable.isha, hijri: timetable.hijri }
         timetable = zone.timetables.create_with(data).find_or_create_by(tarikh: date, zone_code: zone.code)
-        timetable.assign_attributes(serial: sn) 
+        puts timetable.errors.inspect if timetable.errors.present?
+        timetable.assign_attributes(serial: sn)
         timetable.save if timetable.changed?
       end
     end
@@ -55,6 +57,6 @@ class UpdaterJob < ApplicationJob
 
   def malay_month
     {'jan' => 1, 'feb' => 2, 'mac' => 3, 'apr' => 4, 'mei' => 5, 'jun' => 6,
-     'jul' => 7, 'ogos' => 8, 'sep' => 9, 'okt' => 10, 'nov' => 11, 'dis' => 2}
+     'jul' => 7, 'ogos' => 8, 'sep' => 9, 'okt' => 10, 'nov' => 11, 'dis' => 12}
   end
 end
