@@ -3,7 +3,7 @@ module ApplicationHelper
 	def hijri_date(date)
     date = date.to_date
     if date.present?
-		  HijriUmmAlqura.gd_to_hd(date.year, date.month, date.day)
+		  "none"
     else
       date
     end
