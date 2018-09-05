@@ -24,19 +24,19 @@ class UpdaterJob < ApplicationJob
   
     skip_update = false
     if (db.count() == days) and (db_sn.first.to_i >= sn.to_i)
-      puts "skipping #{params[:zone]} #{year}-#{month}"
+      Rails.logger.debug "skipping #{params[:zone]} #{year}-#{month}"
       skip_update = true
     end
 
     if skip_update == false
-      puts "updating #{params[:zone]} #{year}-#{month}"
       timetables = Jakim.monthly(month: month, zone: params[:zone])
+      Rails.logger.debug "updating #{params[:zone]} #{year}-#{month} #{timetables.present?}"
       timetables["prayerTime"].try(:each) do |timetable|
         #puts timetable.date.inspect
         date = normalize_date(timetable.date).to_date
         data = { imsak: timetable.imsak, subuh: timetable.fajr, syuruk: timetable.syuruk, zohor: timetable.dhuhr, asar: timetable.asr, maghrib: timetable.maghrib,  isyak: timetable.isha, hijri: timetable.hijri }
         timetable = zone.timetables.create_with(data).find_or_create_by(tarikh: date, zone_code: zone.code)
-        puts timetable.errors.inspect if timetable.errors.present?
+        Rails.logger.debug timetable.errors.inspect if timetable.errors.present?
         timetable.assign_attributes(serial: sn)
         timetable.save if timetable.changed?
       end
