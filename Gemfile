@@ -45,7 +45,7 @@ gem 'rails-i18n'
 gem 'slim-rails'
 gem 'responders'
 gem 'decent_exposure'
-gem 'hijri_umm_alqura'
 gem 'seed_dump'
 gem 'administrate'
+gem 'flexirest'
 

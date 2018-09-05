@@ -61,6 +61,8 @@ GEM
     builder (3.2.3)
     byebug (10.0.2)
     concurrent-ruby (1.0.5)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
     crass (1.0.4)
     datetime_picker_rails (0.0.7)
       momentjs-rails (>= 2.8.1)
@@ -68,12 +70,18 @@ GEM
       activesupport (>= 4.0)
     erubi (1.7.1)
     execjs (2.7.0)
+    faraday (0.15.2)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.23)
     figaro (1.1.1)
       thor (~> 0.14)
+    flexirest (1.7.1)
+      activesupport
+      crack
+      faraday
+      multi_json
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    hijri_umm_alqura (0.0.1)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
@@ -115,6 +123,7 @@ GEM
       railties (>= 3.1)
     msgpack (1.2.4)
     multi_json (1.13.1)
+    multipart-post (2.0.0)
     nio4r (2.3.1)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
@@ -158,6 +167,7 @@ GEM
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
     ruby_dep (1.5.0)
+    safe_yaml (1.0.4)
     sass (3.5.6)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -212,7 +222,7 @@ DEPENDENCIES
   byebug
   decent_exposure
   figaro
-  hijri_umm_alqura
+  flexirest
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   puma (~> 3.11)
@@ -227,7 +237,7 @@ DEPENDENCIES
   sqlite3
 
 RUBY VERSION
-   ruby 2.5.0p0
+   ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.1
+   1.16.2
