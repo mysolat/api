@@ -1,8 +1,6 @@
 class StatesController < ApplicationController
   before_action :set_state, only: [:show, :update, :destroy]
 
-  respond_to :json
-
   def index
     @states = State.all
     respond_with(@states)

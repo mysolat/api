@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2017_05_08_122914) do
     t.string "district"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["state_id"], name: "index_locations_on_state_id"
+    t.index ["zone_code"], name: "index_locations_on_zone_code"
   end
 
   create_table "states", force: :cascade do |t|
@@ -30,6 +32,7 @@ ActiveRecord::Schema.define(version: 2017_05_08_122914) do
   create_table "timetables", force: :cascade do |t|
     t.string "zone_code"
     t.date "tarikh"
+    t.date "hijri"
     t.string "imsak"
     t.string "subuh"
     t.string "syuruk"
@@ -41,6 +44,8 @@ ActiveRecord::Schema.define(version: 2017_05_08_122914) do
     t.string "serial"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["tarikh"], name: "index_timetables_on_tarikh"
+    t.index ["zone_code"], name: "index_timetables_on_zone_code"
   end
 
   create_table "zones", force: :cascade do |t|
@@ -49,6 +54,8 @@ ActiveRecord::Schema.define(version: 2017_05_08_122914) do
     t.text "remarks"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_zones_on_code"
+    t.index ["state_id"], name: "index_zones_on_state_id"
   end
 
 end

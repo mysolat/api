@@ -9,7 +9,6 @@ class ZonesController < ApplicationController
   def show
     @year = params[:year].present? ? params[:year].to_i : Date.today.year
     @month = params[:month].present? ? params[:month].to_i : Date.today.month
-
     if params[:year].present? and params[:month].present?
       start_date = Date.new(@year, @month, 1)
       end_date = start_date.end_of_month
@@ -17,7 +16,6 @@ class ZonesController < ApplicationController
     else
       @timetables = @zone.timetables.daily(Date.today)
     end
-    UpdaterJob.perform_later(zone: @zone.code, year: @year, month: @month)
     respond_with(@zone)
   end
 

@@ -3,6 +3,7 @@ class CreateTimetables < ActiveRecord::Migration[5.1]
     create_table :timetables do |t|
       t.string    :zone_code
       t.date      :tarikh
+      t.date      :hijri
       t.string    :imsak
       t.string    :subuh
       t.string    :syuruk
@@ -15,5 +16,7 @@ class CreateTimetables < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+    add_index :timetables, :zone_code
+    add_index :timetables, :tarikh
   end
 end

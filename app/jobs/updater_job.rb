@@ -13,7 +13,7 @@ class UpdaterJob < ApplicationJob
   
     timetables["prayerTime"].try(:each) do |timetable|
       date = timetable.date.to_date
-      data = { imsak: timetable.imsak, subuh: timetable.fajr, syuruk: timetable.syuruk, zohor: timetable.dhuhr, asar: timetable.asar, maghrib: timetable.maghrib,  isyak: timetable.isyak }
+      data = { imsak: timetable.imsak, subuh: timetable.fajr, syuruk: timetable.syuruk, zohor: timetable.dhuhr, asar: timetable.asr, maghrib: timetable.maghrib,  isyak: timetable.isha, hijri: timetable.hijri }
       timetable = Timetable.create_with(data).find_or_create_by(tarikh: date, zone_code: zone.code)
       timetable.update(serial: "#{Date.today.year}#{Date.today.month}") if timetable.persisted?
     end

@@ -7,5 +7,7 @@ class CreateLocations < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+    add_index :locations, :state_id
+    add_index :locations, :zone_code
   end
 end
