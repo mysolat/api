@@ -69,7 +69,7 @@ locations = [
       {kod: "SBH09", zon: "Beaufort, Kuala Penyu, Sipitang, Tenom, Long Pa Sia, Membakut, Weston, Bahagian Pendalaman (Bawah)", negeri: "Sabah"},
      
       {kod: "SGR01", zon: "Gombak, Petaling, Sepang, Hulu Langat, Hulu Selangor, Rawang, Shah Alam", negeri: "Selangor"},
-      {kod: "SGR02", zon: "SKuala Selangor, Sabak Bernam", negeri: "Selangor"},
+      {kod: "SGR02", zon: "Kuala Selangor, Sabak Bernam", negeri: "Selangor"},
       {kod: "SGR03", zon: "Klang, Kuala Langat", negeri: "Selangor"},
 
       {kod: "SWK01", zon: "Limbang, Lawas, Sundar, Trusan", negeri: "Sarawak"},

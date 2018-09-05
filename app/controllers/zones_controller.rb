@@ -37,11 +37,13 @@ class ZonesController < ApplicationController
   end
 
   private
-    def set_zone
-      @zone = Zone.find(params[:id])
-    end
 
-    def zone_params
-      params.require(:zone).permit(:code, :state_id, :remarks)
-    end
+  def set_zone
+    @zone = Zone.find(params[:id])
+  end
+
+  def zone_params
+    params.require(:zone).permit(:code, :state_id, :remarks)
+  end
+  
 end

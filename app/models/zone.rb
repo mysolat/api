@@ -18,7 +18,7 @@ class Zone < ApplicationRecord
     if input.is_a?(Integer)
       super
     else
-      find_by(code: input.upcase)
+      find_by!(code: input.upcase)
     end
   end
 
