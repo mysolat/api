@@ -19,19 +19,19 @@ class UpdaterJob < ApplicationJob
     db = zone.timetables.monthly(start_date, end_date)
     db_sn = db.pluck(:serial).uniq
 
-    puts db_sn.inspect
-    puts db.count.inspect
+    #puts db_sn.inspect
+    #puts db.count.inspect
   
     skip_update = false
     if (db.count() == days) and (db_sn.first.to_i >= sn.to_i)
-      puts "skipping"
+      puts "skipping #{params[:zone]} #{year}-#{month}"
       skip_update = true
     end
 
     if skip_update == false
       timetables = Jakim.monthly(month: month, zone: params[:zone])
       timetables["prayerTime"].try(:each) do |timetable|
-        puts timetable.date.inspect
+        #puts timetable.date.inspect
         date = normalize_date(timetable.date).to_date
         data = { imsak: timetable.imsak, subuh: timetable.fajr, syuruk: timetable.syuruk, zohor: timetable.dhuhr, asar: timetable.asr, maghrib: timetable.maghrib,  isyak: timetable.isha, hijri: timetable.hijri }
         timetable = zone.timetables.create_with(data).find_or_create_by(tarikh: date, zone_code: zone.code)
@@ -48,8 +48,8 @@ class UpdaterJob < ApplicationJob
     day = date[0]
     month = date[1]
     year = date[2]
-    puts "#{date} #{month}"
-    puts malay_month[month.downcase].inspect
+    #puts "#{date} #{month}"
+    #puts malay_month[month.downcase].inspect
     "#{year}-#{malay_month[month.downcase]}-#{day}"
   end
 
