@@ -15,7 +15,7 @@ class UpdaterJob < ApplicationJob
       date = timetable.date.to_date
       data = { imsak: timetable.imsak, subuh: timetable.fajr, syuruk: timetable.syuruk, zohor: timetable.dhuhr, asar: timetable.asar, maghrib: timetable.maghrib,  isyak: timetable.isyak }
       timetable = Timetable.create_with(data).find_or_create_by(tarikh: date, zone_code: zone.code)
-      timetable.update_columns(serial: "#{Date.today.year}#{Date.today.month}") if timetable.persisted?
+      timetable.update(serial: "#{Date.today.year}#{Date.today.month}") if timetable.persisted?
     end
 
   end
